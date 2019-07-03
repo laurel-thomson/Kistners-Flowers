@@ -21,7 +21,6 @@ const createSession = require('./src/create-session');
 const loadSession = require('./lib/load-session');
 const serveUpdatePassword = require('./src/serve-update-password');
 const updatePassword = require('./src/update-password');
-const serveStylesheet = require('./src/serve-stylesheet');
 
 var router = new Router(serve404);
 var templates = new Templates("./templates");

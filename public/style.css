@@ -93,11 +93,16 @@ h1 {
     right: 0;
 }
 
-#thumbnails {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+main {
+    margin-left: 5%;
+    margin-right: 5%;
 }
+
+.arrangements-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
 .card {
     margin: 40px;
