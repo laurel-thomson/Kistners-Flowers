@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
-    "node.js": "12.5.0",
+    "node.js": "^12.5.0",
     "sqlite3": "^4.0.9"
   }
 }
