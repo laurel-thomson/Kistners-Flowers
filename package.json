@@ -10,6 +10,8 @@
   "author": "Laurel Thomson",
   "license": "ISC",
   "dependencies": {
-    "node.js": "0.0.0"
+    "bcrypt": "^3.0.6",
+    "node.js": "0.0.0",
+    "sqlite3": "^4.0.9"
   }
 }
