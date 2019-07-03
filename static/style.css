@@ -1,0 +1,139 @@
+body {
+	font-family: Playfair Display;
+}
+
+nav {
+    overflow: hidden;
+    background-color: #000;
+}
+
+nav a {
+    float: right;
+    font-size: 16px;
+    color: #F2EBD0;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    min-width: 170px;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px; 
+    border: none;
+    outline: none;
+    color: #F2EBD0;
+    padding: 14px 20px;
+    text-transform: uppercase;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    min-width: 220px;
+}
+
+nav a:hover, .dropdown:hover .dropbtn {
+    background-color: #83052B;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F2EBD0;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #83052B;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.top_panel {
+	background-image: url("background_flowers.jpg");
+	background-repeat: no-repeat;
+	background-color: #000000;
+	background-size:cover;
+	background-position: center;
+    border-bottom: 5px solid black;
+    width: 100%;
+    height: 400px;
+    top: 0;
+    position: relative;
+}
+
+h1 {
+	font-weight:800;
+    font-family: Vivaldi;
+    color: #F2EBD0;
+    text-align: center;
+    background-color:#83052B;
+    font-size: 6em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    margin: 40px;
+    padding: 10px;
+    color: #83052B;
+    text-decoration: none;
+}
+
+.card:hover {
+    color: black;
+    border: 1px solid black;
+    margin: 39px;
+    box-shadow: darkgray 2px 2px 2px;
+}
+
+.card img {
+    width: 250px;
+}
+
+p {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+footer {
+    background-color: #83052B;
+}
+
+footer p {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #F2EBD0;
+}
+
+
+
+
+
