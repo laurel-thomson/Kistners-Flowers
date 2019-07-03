@@ -4,7 +4,7 @@ var http = require('http');
 var fs = require('fs');
 var recipes = require('./src/recipes');
 
-var port = 80;
+var port = process.env.PORT || 3000;
 var cardData = recipes.featured(9);
 
 //our webserver
