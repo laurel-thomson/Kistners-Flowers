@@ -82,11 +82,12 @@ nav a:hover, .dropdown:hover .dropbtn {
 
 h1 {
 	font-weight:800;
-    font-family: Vivaldi;
+    font-family: Allura;
     color: #F2EBD0;
     text-align: center;
     background-color:#83052B;
     font-size: 6em;
+    letter-spacing: 5px;
     position: absolute;
     bottom: 0;
     left: 0;
