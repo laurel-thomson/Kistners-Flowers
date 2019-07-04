@@ -1,22 +1,6 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./data/flowers.db');
 
-//adding a users table to the database
-db.run(`CREATE TABLE IF NOT EXISTS users (
-          id INTEGER PRIMARY KEY,
-          username VARCHAR(75),
-          cryptedPassword VARCHAR(60),
-          role VARCHAR(10)
-        )`, (err) => {console.error(err);}
-);
-
-/** @typedef ArrangementData {Object}
- * @property {string} id
- * @property {string} name
- * @property {string} description
- * @property {string[]} photo_ids
- */
-
 var arrangements = {}
 
 
@@ -39,15 +23,6 @@ arrangements.getAll = function(callback) {
     });
 }
 
-/** @callback Images~featuredCallback
-   * @param {Exception|string} err - the error (if any)
-   * @param {ArrangementData[]} arrangementData - the arrangment data
-   */
-/** @function arrangements.featured
-  * Retrieves the requested arrangement
-  * @param {integer} count - the number of featured arrangments requested
-  * @param {Images~featuredCallback} callback - the callback to invoke
-  */
 arrangements.featured = function(count, callback) {
   var sql = `SELECT arrangements.id, name, description,
               GROUP_CONCAT(arrangements_photos.id) AS photo_ids
@@ -79,15 +54,7 @@ arrangements.featured = function(count, callback) {
   });
 }
 
-/** @callback Images~findCallback
-   * @param {Exception|string} err - the error (if any)
-   * @param {ArrangementData[]} arrangementData - the arrangment data
-   */
-/** @function arrangements.find
-  * Retrieves the requested arrangement
-  * @param {integer} id - the id of the requested arrangement
-  * @param {Images~findCallback} callback - the callback to invoke
-  */
+
 arrangements.find = function(id, callback) {
   var sql = `SELECT arrangements.id, name, description,
               GROUP_CONCAT(arrangements_photos.id) AS photo_ids
@@ -106,84 +73,9 @@ arrangements.find = function(id, callback) {
   });
 }
 
-/** @callback Arrangements~createCallback
-   * @param {Exception|string} err - the error (if any)
-   */
-/** @function arrangements.create
-  * Creates a new arrangment in the database
-  * @param {ArrangementData} arrangementData - the arrangement to add
-  * @param {Arrangements~createCallback} callback
-  */
-arrangements.create = function(arrangementData, callback) {
-  // Step 1: Insert into arrangements table
-  db.run("INSERT INTO arrangements (name, description) VALUES (?, ?)",
-    arrangementData.name,
-    arrangementData.description,
-    function(err) {
-      // On error, invoke callback and stop execution
-      if(err) return callback(err);
-      // Step 2: Insert into arrangments_photos table
-      db.run("INSERT INTO arrangements_photos (arrangement_id, filename, mime_type, data) VALUES (?, ?, ?, ?)",
-        this.lastID, // node-sqlite3 saves the last generated id to the context in an INSERT callback
-        arrangementData.image.filename,
-        arrangementData.image.contentType,
-        arrangementData.image.data,
-        function(err) {
-          // On error, invoke callback and stop execution
-          if(err) return callback(err);
-          // Otherwise, invoke callback with no error
-          else return callback();
-        }
-      );
-    }
-  );
-}
-    
- /** @callback Arrangements~updateCallback
-   * @param {Exception|string} err - the error (if any)
-   */
-/** @function arrangements.update
-  * Updates an existing arrangment in the database
-  * @param {ArrangementData} arrangementData - the arrangement to add
-  * @param {Arrangements~updateCallback} callback
-  */
-arrangements.update = function(arrangementData, callback) {
-  // Update arrangements table
-  console.log("Name: " + arrangementData.name);
-  console.log("Description: " + arrangementData.description);
-  console.log("Id: " + arrangementData.id);
-  db.run("UPDATE arrangements SET name = ?, description = ? WHERE id = ?",
-    arrangementData.name,
-    arrangementData.description,
-    arrangementData.id,
-    function(err) {
-      // On error, invoke callback and stop execution
-      if(err) return callback(err);
-      // Otherwise, invoke callback with no error
-      else return callback();
-    }
-  );
-}
-
-
-/** @typedef ArrangementImageData {Object}
- * @property {string} id
- * @property {string} filename
- * @property {string} mime_type
- * @property {Buffer} data
- */
-
 var arrangementImages = {}
 
-/** @callback ArrangementImages~findCallback
-   * @param {Exception|string} err - the error (if any)
-   * @param {ArrangementImageData} imageData - the arrangment image data
-   */
-/** @function arrangementImages.find
-  * Retrieves the requested arrangement
-  * @param {integer} id - the id of the requested arrangement
-  * @param {ArrangementImages~findCallback} callback - the callback to invoke
-  */
+
 arrangementImages.find = function(id, callback) {
   db.get("SELECT * FROM arrangements_photos WHERE id = ?;", id, (err, row) => {
     if(err) console.error(err);

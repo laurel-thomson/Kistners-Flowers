@@ -80,7 +80,7 @@ nav a:hover, .dropdown:hover .dropbtn {
     position: relative;
 }
 
-h1 {
+#title {
 	font-weight:800;
     font-family: Allura;
     color: #F2EBD0;
