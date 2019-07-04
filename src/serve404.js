@@ -1,8 +1,3 @@
-/** @function serve404
-  * Endpoint serving 404 errors 
-  * @param {http.IncomingMessage} req - the request object
-  * @param {http.ServerResponse} res - the response object
-  */
 function serve404(req, res) {
   // Log the 404 error
   console.error(`404 Error: Unable to serve ${req.url}`);

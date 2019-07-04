@@ -2,11 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const serve404 = require('./serve404');
 
-/** @function serveFile
-  * Endpoint serving a file from the public directory
-  * @param {http.IncomingMessage} req - the request object
-  * @param {http.ServerResponse} res - the response object
-  */
 function serveFile(req, res) {
   var filePath = path.join('./public', req.params.filename);
   var extension = path.extname(filePath).replace('.', '');

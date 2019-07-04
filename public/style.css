@@ -110,6 +110,7 @@ main {
     padding: 10px;
     color: #83052B;
     text-decoration: none;
+    width: 300px;
 }
 
 .card:hover {
