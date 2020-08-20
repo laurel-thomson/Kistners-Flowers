@@ -10,7 +10,7 @@
   "author": "Laurel Thomson",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "node.js": "0.0.0",
     "sqlite3": "^4.0.9"
   }
